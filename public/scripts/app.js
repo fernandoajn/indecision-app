@@ -1,68 +1,62 @@
-"use strict";
+'use strict';
 
 var root = document.querySelector("#app");
 
+var app = {
+  title: 'Indecision App',
+  subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ullam.'
+};
+
 var template = React.createElement(
-  "div",
+  'div',
   null,
   React.createElement(
-    "h1",
+    'h1',
     null,
-    "Hello world!"
+    app.title
   ),
   React.createElement(
-    "p",
+    'p',
     null,
-    "Lorem ipsum dolor sit amet."
-  ),
-  React.createElement(
-    "ol",
-    null,
-    React.createElement(
-      "li",
-      null,
-      "Item one"
-    ),
-    React.createElement(
-      "li",
-      null,
-      "Item two"
-    ),
-    React.createElement(
-      "li",
-      null,
-      "Item three"
-    )
+    app.subtitle
   )
 );
 
+var user = {
+  name: 'Fernando',
+  age: 19,
+  location: 'Alagoas'
+};
+
 var templateTwo = React.createElement(
-  "div",
+  'div',
   null,
   React.createElement(
-    "h1",
+    'h1',
     null,
-    "Fernando Augusto"
+    user.name
   ),
   React.createElement(
-    "p",
+    'p',
     null,
     React.createElement(
-      "strong",
+      'strong',
       null,
-      "Age:"
+      'Age:'
     ),
-    " 19"
+    ' ',
+    user.age
   ),
   React.createElement(
-    "p",
+    'p',
     null,
     React.createElement(
-      "strong",
+      'strong',
       null,
-      "Location:"
+      'Location:'
     ),
-    " Macei\xF3"
+    ' ',
+    user.location
   )
 );
 

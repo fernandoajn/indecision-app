@@ -1,22 +1,28 @@
 var root = document.querySelector("#app");
 
+var app = {
+  title: 'Indecision App',
+  subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ullam.'
+}
+
 var template = (
   <div>
-    <h1>Hello world!</h1>
-    <p>Lorem ipsum dolor sit amet.</p>
-    <ol>
-      <li>Item one</li>
-      <li>Item two</li>
-      <li>Item three</li>
-    </ol>
+    <h1>{app.title}</h1>
+    <p>{app.subtitle}</p>
   </div>
 );
 
+var user = {
+  name: 'Fernando',
+  age: 19,
+  location: 'Alagoas'
+};
+
 var templateTwo = (
   <div>
-    <h1>Fernando Augusto</h1>
-    <p><strong>Age:</strong> 19</p>
-    <p><strong>Location:</strong> Maceió</p>
+    <h1>{user.name}</h1>
+    <p><strong>Age:</strong> {user.age}</p>
+    <p><strong>Location:</strong> {user.location}</p>
   </div>
 );
 
