@@ -1,0 +1,25 @@
+{
+  "name": "indecision-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Fernando Augusto",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fernandoajn/react-course.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fernandoajn/react-course/issues"
+  },
+  "homepage": "https://github.com/fernandoajn/react-course#readme",
+  "description": ""
+}
