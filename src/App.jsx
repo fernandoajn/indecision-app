@@ -1,12 +1,12 @@
-var root = document.querySelector("#app");
+const root = document.querySelector("#app");
 
-var app = {
+const app = {
   title: 'Indecision App',
   subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ullam.',
   options: ['create', 'read', 'update', 'delete']
 }
 
-var template = (
+const template = (
   <div>
     <h1>{app.title}</h1>
     <p>{app.subtitle && app.subtitle}</p>
@@ -14,7 +14,7 @@ var template = (
   </div>
 );
 
-var user = {
+const user = {
   name: 'Fernando',
   age: 19,
   location: 'Alagoas'
@@ -25,7 +25,7 @@ function getLocation(location) {
     return <p>Location: {location}</p>
 }
 
-var templateTwo = (
+const templateTwo = (
   <div>
     <h1>{user.name ? user.name : 'Anonymous'}</h1>
     <p>{(user.age && user.age >= 18) && `Age: ${user.age}`}</p>
