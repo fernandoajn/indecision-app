@@ -1,46 +1,52 @@
-const root = document.querySelector("#app");
-
 const app = {
   title: 'Indecision App',
   subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ullam.',
-  options: ['create', 'read', 'update', 'delete']
+  options: []
 }
 
-const template = (
-  <div>
-    <h1>{app.title}</h1>
-    <p>{app.subtitle && app.subtitle}</p>
-    <p>{app.options.length > 0 ? "Here are your options" : "No options at all"}</p>
-  </div>
-);
+const onFormSubmit = (e) => {
+  e.preventDefault();
+  let option = e.target.elements.option.value;
 
-let count = 0;
-const addOne = () => {
-  count++;
-  renderCounterApp();
+  if(option) {
+    app.options.push(option);
+    e.target.elements.option.value = '';
+    renderFormLength();
+  }
+  
 }
 
-const minusOne = () => {
-  count--;
-  renderCounterApp();
+const clearArray = () => {
+  app.options = [];
+  renderFormLength();
 }
 
-const reset = () => {
-  count = 0;
-  renderCounterApp(); 
-}
+const root = document.querySelector("#app");
 
-const renderCounterApp = () => {
-  const templateTwo = (
+const renderFormLength = () => {
+  const template = (
     <div>
-      <h1>Count: {count}</h1>
-      <button onClick={addOne}>+1</button>
-      <button onClick={minusOne}>-1</button>
-      <button onClick={reset}>reset</button>
+      <h1>{app.title}</h1>
+      <p>{app.subtitle && app.subtitle}</p>
+      <p>{app.options.length > 0 ? "Here are your options" : "No options at all"}</p>
+      <p>{app.options.length}</p>
+
+      <ol>
+        <li>Item One</li>
+        <li>Item Two</li>
+      </ol>
+
+      <button onClick={clearArray}>Clear</button>
+
+      <form onSubmit={onFormSubmit}>
+        <input type="text" name="option"/>
+        <button>Add option</button>
+      </form>
+
     </div>
   );
-
-  ReactDOM.render(templateTwo, root);
+  
+  ReactDOM.render(template, root);
 }
 
-renderCounterApp();
+renderFormLength();
