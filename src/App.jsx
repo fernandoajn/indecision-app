@@ -14,25 +14,28 @@ const template = (
   </div>
 );
 
-const user = {
-  name: 'Fernando',
-  age: 19,
-  location: 'Alagoas'
-};
+let count = 0;
+const addOne = () => {
+  console.log("add one");
+}
 
-function getLocation(location) {
-  if(location) 
-    return <p>Location: {location}</p>
+const minusOne = () => {
+  console.log("minus one");
+}
+
+const reset = () => {
+  console.log("reset");
 }
 
 const templateTwo = (
   <div>
-    <h1>{user.name ? user.name : 'Anonymous'}</h1>
-    <p>{(user.age && user.age >= 18) && `Age: ${user.age}`}</p>
-    <p>{getLocation(user.location)}</p>
+    <h1>Count: {count}</h1>
+    <button onClick={addOne}>+1</button>
+    <button onClick={minusOne}>-1</button>
+    <button onClick={reset}>reset</button>
   </div>
 );
 
 // Can't pass more than one var as parameter
 // We need to put them on an array
-ReactDOM.render([template, templateTwo], root);
+ReactDOM.render(templateTwo, root);
