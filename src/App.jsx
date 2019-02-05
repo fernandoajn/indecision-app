@@ -16,26 +16,31 @@ const template = (
 
 let count = 0;
 const addOne = () => {
-  console.log("add one");
+  count++;
+  renderCounterApp();
 }
 
 const minusOne = () => {
-  console.log("minus one");
+  count--;
+  renderCounterApp();
 }
 
 const reset = () => {
-  console.log("reset");
+  count = 0;
+  renderCounterApp(); 
 }
 
-const templateTwo = (
-  <div>
-    <h1>Count: {count}</h1>
-    <button onClick={addOne}>+1</button>
-    <button onClick={minusOne}>-1</button>
-    <button onClick={reset}>reset</button>
-  </div>
-);
+const renderCounterApp = () => {
+  const templateTwo = (
+    <div>
+      <h1>Count: {count}</h1>
+      <button onClick={addOne}>+1</button>
+      <button onClick={minusOne}>-1</button>
+      <button onClick={reset}>reset</button>
+    </div>
+  );
 
-// Can't pass more than one var as parameter
-// We need to put them on an array
-ReactDOM.render(templateTwo, root);
+  ReactDOM.render(templateTwo, root);
+}
+
+renderCounterApp();
