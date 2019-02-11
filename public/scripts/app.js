@@ -22,6 +22,12 @@ var clearArray = function clearArray() {
   renderFormLength();
 };
 
+var onMakeDecision = function onMakeDecision() {
+  var random = Math.floor(Math.random() * app.options.length);
+  var option = app.options[random];
+  alert(option);
+};
+
 var root = document.querySelector("#app");
 
 var renderFormLength = function renderFormLength() {
@@ -61,8 +67,13 @@ var renderFormLength = function renderFormLength() {
     ),
     React.createElement(
       'button',
+      { disabled: app.options.length === 0, onClick: onMakeDecision },
+      'What should I do?'
+    ),
+    React.createElement(
+      'button',
       { onClick: clearArray },
-      'Clear'
+      'Remove all'
     ),
     React.createElement(
       'form',
