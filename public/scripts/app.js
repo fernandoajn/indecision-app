@@ -51,16 +51,13 @@ var renderFormLength = function renderFormLength() {
     React.createElement(
       'ol',
       null,
-      React.createElement(
-        'li',
-        null,
-        'Item One'
-      ),
-      React.createElement(
-        'li',
-        null,
-        'Item Two'
-      )
+      app.options.map(function (option) {
+        return React.createElement(
+          'li',
+          { key: option },
+          option
+        );
+      })
     ),
     React.createElement(
       'button',
@@ -70,7 +67,7 @@ var renderFormLength = function renderFormLength() {
     React.createElement(
       'form',
       { onSubmit: onFormSubmit },
-      React.createElement('input', { type: 'text', name: 'option' }),
+      React.createElement('input', { type: 'text', name: 'option', autoFocus: true }),
       React.createElement(
         'button',
         null,

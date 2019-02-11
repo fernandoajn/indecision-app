@@ -8,12 +8,12 @@ const onFormSubmit = (e) => {
   e.preventDefault();
   let option = e.target.elements.option.value;
 
-  if(option) {
+  if (option) {
     app.options.push(option);
     e.target.elements.option.value = '';
     renderFormLength();
   }
-  
+
 }
 
 const clearArray = () => {
@@ -32,20 +32,23 @@ const renderFormLength = () => {
       <p>{app.options.length}</p>
 
       <ol>
-        <li>Item One</li>
-        <li>Item Two</li>
+        {
+          app.options.map((option) => {
+            return <li key={option}>{option}</li>;
+          })
+        }
       </ol>
 
       <button onClick={clearArray}>Clear</button>
 
       <form onSubmit={onFormSubmit}>
-        <input type="text" name="option"/>
+        <input type="text" name="option" autoFocus />
         <button>Add option</button>
       </form>
 
     </div>
   );
-  
+
   ReactDOM.render(template, root);
 }
 
