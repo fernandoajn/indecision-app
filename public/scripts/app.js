@@ -1,93 +1,41 @@
 'use strict';
 
 var app = {
-  title: 'Indecision App',
-  subtitle: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ullam.',
-  options: []
+  title: 'Visibility Toggle',
+  text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia quaerat nihil magni aut aliquid non a sunt provident ipsa, numquam quis sint iure inventore id quasi voluptates? Autem reiciendis distinctio rem aut beatae cumque, repellat optio voluptatem, veritatis, aperiam nulla. Laboriosam autem deleniti quos maiores nesciunt accusantium numquam amet rem. '
 };
 
-var onFormSubmit = function onFormSubmit(e) {
-  e.preventDefault();
-  var option = e.target.elements.option.value;
+var visibility = false;
 
-  if (option) {
-    app.options.push(option);
-    e.target.elements.option.value = '';
-    renderFormLength();
-  }
-};
-
-var clearArray = function clearArray() {
-  app.options = [];
-  renderFormLength();
-};
-
-var onMakeDecision = function onMakeDecision() {
-  var random = Math.floor(Math.random() * app.options.length);
-  var option = app.options[random];
-  alert(option);
+var toggleVisibility = function toggleVisibility() {
+  visibility = !visibility;
+  render();
 };
 
 var root = document.querySelector("#app");
 
-var renderFormLength = function renderFormLength() {
+var render = function render() {
   var template = React.createElement(
     'div',
-    null,
+    { className: 'wrap' },
     React.createElement(
       'h1',
       null,
       app.title
     ),
     React.createElement(
-      'p',
-      null,
-      app.subtitle && app.subtitle
-    ),
-    React.createElement(
-      'p',
-      null,
-      app.options.length > 0 ? "Here are your options" : "No options at all"
-    ),
-    React.createElement(
-      'p',
-      null,
-      app.options.length
-    ),
-    React.createElement(
-      'ol',
-      null,
-      app.options.map(function (option) {
-        return React.createElement(
-          'li',
-          { key: option },
-          option
-        );
-      })
-    ),
-    React.createElement(
       'button',
-      { disabled: app.options.length === 0, onClick: onMakeDecision },
-      'What should I do?'
+      { onClick: toggleVisibility },
+      visibility ? 'Hide element' : 'Show element'
     ),
     React.createElement(
-      'button',
-      { onClick: clearArray },
-      'Remove all'
-    ),
-    React.createElement(
-      'form',
-      { onSubmit: onFormSubmit },
-      React.createElement('input', { type: 'text', name: 'option', autoFocus: true }),
-      React.createElement(
-        'button',
-        null,
-        'Add option'
-      )
+      'p',
+      null,
+      app.text && visibility && app.text
     )
   );
 
   ReactDOM.render(template, root);
 };
 
-renderFormLength();
+render();
