@@ -6,9 +6,9 @@ class IndecisionApp extends React.Component {
 
     return (
       <div>
-        <Header title={title} subtitle={subtitle}/>
+        <Header title={title} subtitle={subtitle} />
         <Action />
-        <Options options={options}/>
+        <Options options={options} />
         <AddOption />
       </div>
     );
@@ -26,21 +26,30 @@ class Header extends React.Component {
 }
 
 class Action extends React.Component {
+  handlePick() {
+    alert('Handle pick!');
+  }
+
   render() {
     return (
       <div>
-        <button>What should I do?</button>
+        <button onClick={this.handlePick}>What should I do?</button>
       </div>
     );
   }
 }
 
 class Options extends React.Component {
+  handleRemoveAll() {
+    alert('Remove all called!');
+  }
+
   render() {
     return (
       <div>
+        <button onClick={this.handleRemoveAll}>Remove all</button>
         {this.props.options.length}
-        {this.props.options.map(option => <Option key={option} optionText={option}/>)}
+        {this.props.options.map(option => <Option key={option} optionText={option} />)}
       </div>
     );
   }
@@ -48,21 +57,32 @@ class Options extends React.Component {
 
 class Option extends React.Component {
   render() {
-    return(
+    return (
       <p>{this.props.optionText}</p>
     );
   }
 }
 
 class AddOption extends React.Component {
+  handleAddOption(e) {
+    e.preventDefault();
+    const option = e.target.elements.option.value.trim();
+    
+    if(option) {
+      alert(option);
+    }
+  }
+
   render() {
     return (
-      <form>
-        <input type="text" name="" id=""/>
-        <button>Add option</button>
-      </form>
-    ); 
+      <div>
+        <form onSubmit={this.handleAddOption}>
+          <input type="text" name="option"/>
+          <button>Add option</button>
+        </form>
+      </div>
+    );
   }
 }
 
-ReactDOM.render(<IndecisionApp/>, document.querySelector('#app'));
+ReactDOM.render(<IndecisionApp />, document.querySelector('#app'));
