@@ -1,37 +1,42 @@
-const app = {
-  title: 'Visibility Toggle',
-  text: ' Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eaque beatae ipsam maxime asperiores, officiis nulla illo nemo sint ipsa nobis corrupti dolorem quo sunt ea. Tempora nulla laboriosam iusto hic ipsam fuga, aspernatur animi quod impedit, laborum facere sequi commodi quibusdam perspiciatis atque. Porro natus reprehenderit aut sint quae. Minus deserunt reprehenderit voluptates aperiam veritatis beatae iure in, sapiente cupiditate ab quia expedita ea omnis, magni eveniet! Est molestias quo cupiditate culpa similique? Architecto doloribus qui illum iusto tempora. Consequuntur ratione omnis eos consectetur qui odit, nihil sunt laborum, architecto enim molestias accusamus aliquam quia suscipit facere nulla? Delectus odit perferendis, doloribus, alias, suscipit odio neque soluta esse dignissimos rerum illo voluptatum quaerat nobis voluptates. Placeat aliquam consectetur atque quo voluptatem a vitae at ad officia ex praesentium, animi suscipit harum magnam neque natus aspernatur quasi ea pariatur eum molestias? Animi similique autem illum sint tempora. Obcaecati eaque dolor magni natus quaerat ut iusto odit, odio minima adipisci quis id et quia eum error quas earum ullam consequuntur! Veniam, eligendi. Ducimus labore quisquam quasi maxime qui sapiente deleniti voluptates non quibusdam fugit ratione impedit incidunt odio excepturi laboriosam earum, eum accusamus possimus. Aliquam esse, dolores ducimus corporis unde, eligendi odio velit distinctio, reprehenderit perspiciatis libero ab nulla repellat quaerat optio architecto incidunt nesciunt soluta inventore quisquam ipsa? Molestiae suscipit non itaque sit fugiat, reiciendis neque unde debitis illo omnis culpa ut sed ratione quis, sint nisi ipsum distinctio! Nobis assumenda unde ea, officiis cumque repudiandae alias cupiditate odit adipisci quidem ex sed magnam esse quo facilis, temporibus consequuntur vel nostrum. Deserunt odio pariatur minus aliquam similique aspernatur quisquam quam suscipit beatae, odit vero magni illo quas sunt? Minus earum tempore laudantium aspernatur nam eligendi, nihil quae similique praesentium ipsam, nostrum aperiam in non quod adipisci pariatur ipsa vitae, soluta sunt? ',
-}
+class ToggleVisibility extends React.Component {
+  constructor(props) {
+    super(props);
+    this.title = 'Visibility',
+    this.text = 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.',
+    this.handleToggleVisibility = this.handleToggleVisibility.bind(this);
+    this.limitDescription = this.limitDescription.bind(this);
+    this.state = {
+      visibility: false
+    }
+  }
+  
+  handleToggleVisibility() {
+    this.setState((prevState) => {
+      return {
+        visibility: !prevState.visibility
+      }
+    })
+  }
 
-let visibility = false;
+  limitDescription(text, size){
+    if (text.length > size) {
+      return `${text.substr(0, size)} [...]`;
+    } else {
+      return text;
+    }
+  }
 
-const toggleVisibility = () => {
-  visibility = !visibility;
-  render();
-}
-
-const limitDescription = (text, size) => {
-  if (text.length > size) {
-    return `${text.substr(0, size)} [...]`;
-  } else {
-    return text;
+  render() {
+    return (
+      <div className="wrap">
+      <h1>{this.title}</h1>
+      <button onClick={this.handleToggleVisibility}>
+        {this.state.visibility ? 'Hide element' : 'Show element'}
+      </button>
+      <p>{this.text && this.state.visibility && this.limitDescription(this.text, 400)}</p>
+    </div>
+    );
   }
 }
 
-const root = document.querySelector("#app");
-
-const render = () => {
-  const template = (
-    <div className="wrap">
-      <h1>{app.title}</h1>
-      <button onClick={toggleVisibility}>
-        {visibility ? 'Hide element' : 'Show element'}
-      </button>
-      <p>{app.text && visibility && limitDescription(app.text, 400)}</p>
-    </div>
-  )
-
-  ReactDOM.render(template, root);
-}
-
-render();
+ReactDOM.render(<ToggleVisibility />, document.querySelector('#app'));
