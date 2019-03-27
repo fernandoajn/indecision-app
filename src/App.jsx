@@ -1,3 +1,5 @@
+// stateless functional component
+
 class IndecisionApp extends React.Component {
   constructor(props) {
     super(props);
@@ -48,6 +50,7 @@ class IndecisionApp extends React.Component {
         <Header title={title} subtitle={subtitle} />
         <Action 
           handlePick={this.handlePick}
+          hasOptions={this.state.options.length > 0 ? true : false}
         />
         <Options
           options={this.state.options}
@@ -60,44 +63,37 @@ class IndecisionApp extends React.Component {
     );
   }
 }
-class Header extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>{this.props.title}</h1>
-        <h2>{this.props.subtitle}</h2>
-      </div>
-    );
-  }
+
+const Header = (props) => {
+  return (
+    <div>
+      <h1>{props.title}</h1>
+      <h2>{props.subtitle}</h2>
+    </div>
+  )
 }
 
-class Action extends React.Component {
-  render() {
-    return (
-      <div>
-        <button onClick={this.props.handlePick}>What should I do?</button>
-      </div>
-    );
-  }
+const Action = (props) => {
+  return (
+    <div>
+      <button onClick={props.handlePick} disabled={!props.hasOptions}>What should I do?</button>
+    </div>
+  )
 }
 
-class Options extends React.Component {
-  render() {
-    return (
-      <div>
-        <button onClick={this.props.handleDeleteOptions}>Remove all</button>
-        {this.props.options.map(option => <Option key={option} optionText={option} />)}
-      </div>
-    );
-  }
+const Options = (props) => {
+  return (
+    <div>
+    <button onClick={props.handleDeleteOptions}>Remove all</button>
+    {props.options.map(option => <Option key={option} optionText={option} />)}
+  </div>
+  )
 }
 
-class Option extends React.Component {
-  render() {
-    return (
-      <p>{this.props.optionText}</p>
-    );
-  }
+const Option = (props) => {
+  return (
+    <p>{props.optionText}</p>
+  )
 }
 
 class AddOption extends React.Component {
@@ -130,6 +126,16 @@ class AddOption extends React.Component {
       </div>
     );
   }
+}
+
+// Stateless Component
+const User = (props) => {
+  return (
+    <div>
+      <p>User: {props.name}</p>
+      <p>Age: {props.age}</p>
+    </div>
+  )
 }
 
 ReactDOM.render(<IndecisionApp />, document.querySelector('#app'));
