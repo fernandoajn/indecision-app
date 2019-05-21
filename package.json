@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "babel src/App.jsx --out-file=public/scripts/app.js --presets=env,react --watch",
+    "test": "babel src/playground/counter-example.jsx --out-file=public/scripts/app.js --presets=env,react --watch",
     "start": "live-server public"
   },
   "author": "Fernando Augusto",
