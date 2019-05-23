@@ -4,6 +4,9 @@ console.log('utils.js is running');
 export const subtract = (x,y) => x-y;
 
 const square = x => x*x;
-const add = (x,y) => x+y;
+const add = (x,y) => x+y; 
 
-export { square, add };
+const divide = (x,y) => x/y;
+// export default divide;
+
+export { square, add, divide as default };

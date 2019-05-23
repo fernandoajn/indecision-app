@@ -69,51 +69,32 @@
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__person__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__person__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__person___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__person__);
+console.log("app.js is running");
+
+// import divide, { square, add, subtract } from './utils';
+
+// console.log(square(7));
+// console.log(add(100, 50));
+// console.log(subtract(75,20));
+// console.log(divide(10,2));
 
 
 
-console.log("app.js is running")
-console.log(__WEBPACK_IMPORTED_MODULE_0__utils__["b" /* square */](7));
-console.log(__WEBPACK_IMPORTED_MODULE_0__utils__["a" /* add */](100, 50));
-console.log(__WEBPACK_IMPORTED_MODULE_0__utils__["c" /* subtract */](75,20));
 
-console.log(__WEBPACK_IMPORTED_MODULE_1__person__["b" /* isAdult */](19));
-console.log(__WEBPACK_IMPORTED_MODULE_1__person__["a" /* canDrink */](19));
+let age = 19;
 
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return square; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return add; });
-console.log('utils.js is running');
-
-// Two ways of named exports
-const subtract = (x,y) => x-y;
-/* harmony export (immutable) */ __webpack_exports__["c"] = subtract;
-
-
-const square = x => x*x;
-const add = (x,y) => x+y;
-
-
+console.log(__WEBPACK_IMPORTED_MODULE_0__person__["isAdult"](age));
+console.log(__WEBPACK_IMPORTED_MODULE_0__person__["canDrink"](age));
+console.log(__WEBPACK_IMPORTED_MODULE_0__person__["default"](age));
 
 /***/ }),
+/* 1 */,
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-const isAdult = age => age >= 18;
-/* harmony export (immutable) */ __webpack_exports__["b"] = isAdult;
-
-const canDrink = age => age >= 21;
-/* harmony export (immutable) */ __webpack_exports__["a"] = canDrink;
-
-
-// export { isAdult, canDrink }
+throw new Error("Module parse failed: /Users/fernandoaugusto/Public/react-course/src/person.js Duplicate export 'isAdult' (7:9)\nYou may need an appropriate loader to handle this file type.\n| // export default isSenior;\n| \n| export { isAdult, canDrink, isSenior as default }");
 
 /***/ })
 /******/ ]);
