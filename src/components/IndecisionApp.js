@@ -86,6 +86,7 @@ export default class IndecisionApp extends React.Component {
     return (
       <div>
         <Header title={title} subtitle={subtitle} />
+        <div className="container">
         <Action 
           handlePick={this.handlePick}
           hasOptions={this.state.options.length > 0 ? true : false}
@@ -102,6 +103,7 @@ export default class IndecisionApp extends React.Component {
           selectedOption={this.state.selectedOption}
           handleClearSelectedOption={this.handleClearSelectedOption}
         />
+        </div>
       </div>
     );
   }
